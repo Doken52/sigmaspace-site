@@ -32,13 +32,18 @@
          особенно заметно через VPN, где каждый новый коннект дорогой. -->
     <link rel="preconnect" href="https://plxfgqjsauqpjwgyjyex.supabase.co" crossorigin />
     <link rel="dns-prefetch" href="https://plxfgqjsauqpjwgyjyex.supabase.co" />
+    <!-- Официальный скрипт Telegram Mini Apps. Без него window.Telegram.WebApp
+         не создаётся: мини-апп не получает initData → сервер не может доказать
+         личность пользователя (проверка подписки на канал и «свой-чужой» в
+         заказах работают вхолостую). Обязательно до наших скриптов. -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>Figma Make App</title>
     
     <meta name="description" content="This app streamlines user navigation in a Telegram channel for figurine sales, featuring a profile section, order tracking, and status updates for enhanced user experience.">
     <meta name="robots" content="noindex, nofollow">
     <meta property="og:title" content="Figma Make App">
     <meta property="og:description" content="This app streamlines user navigation in a Telegram channel for figurine sales, featuring a profile section, order tracking, and status updates for enhanced user experience.">
-    <script type="module" crossorigin src="./assets/index-DX5iGhdo.js"></script>
+    <script type="module" crossorigin src="./assets/index-MdPix9-E.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-hMzkgCBN.css">
   </head>
   <body>
