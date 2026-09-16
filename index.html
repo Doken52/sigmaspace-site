@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Заголовки безопасности. Настоящий анти-DDoS и WAF ставятся на инфраструктуре
+      (Cloudflare / Supabase), здесь — снижение поверхности атаки на клиенте:
+      блокируем плагины (object/embed), перехват через <base>, mixed-content и
+      апгрейдим всё на https. Политика намеренно допускает нужные источники
+      (Supabase, Telegram, шрифты, картинки, страницы оплаты), чтобы ничего не сломать.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval';
+        connect-src 'self' https: wss: ws:;
+        img-src 'self' https: data: blob:;
+        media-src 'self' https: data: blob:;
+        font-src 'self' https: data:;
+        frame-src 'self' https:;
+        worker-src 'self' blob:;
+        object-src 'none';
+        base-uri 'self';
+        upgrade-insecure-requests;
+      "
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Ранний коннект к Supabase Storage: TLS/DNS-рукопожатие делается заранее,
+         поэтому первые картинки (баннер, товары) начинают качаться быстрее —
+         особенно заметно через VPN, где каждый новый коннект дорогой. -->
+    <link rel="preconnect" href="https://plxfgqjsauqpjwgyjyex.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://plxfgqjsauqpjwgyjyex.supabase.co" />
+    <title>Figma Make App</title>
+    
+    <meta name="description" content="This app streamlines user navigation in a Telegram channel for figurine sales, featuring a profile section, order tracking, and status updates for enhanced user experience.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Figma Make App">
+    <meta property="og:description" content="This app streamlines user navigation in a Telegram channel for figurine sales, featuring a profile section, order tracking, and status updates for enhanced user experience.">
+    <script type="module" crossorigin src="./assets/index-DX5iGhdo.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-hMzkgCBN.css">
+  </head>
+  <body>
+    
+    <div id="root"></div>
+    
+  </body>
+</html>
