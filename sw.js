@@ -7,7 +7,14 @@ const STATIC = /\.(?:js|css|woff2?|png|jpe?g|webp|svg|ico)$/
 
 self.addEventListener('install', () => { self.skipWaiting() })
 
-self.addEventListener('activate', e => { e.waitUntil(self.clients.claim()) })
+self.addEventListener('activate', e => {
+  // Убираем кэши прошлых версий: иначе они копятся и занимают место на устройстве.
+  e.waitUntil((async () => {
+    const keys = await caches.keys()
+    await Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    await self.clients.claim()
+  })())
+})
 
 self.addEventListener('fetch', e => {
   const req = e.request
