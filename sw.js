@@ -2,7 +2,7 @@
    Кэширует только статику этого же origin (js/css/шрифты/картинки из сборки) —
    повторные визиты открываются мгновенно, даже при плохой связи.
    API (Supabase), Telegram и оплаты проходят напрямую — их не трогаем. */
-const CACHE = 'sigmaspace-v1'
+const CACHE = 'sigmaspace-v2'
 const STATIC = /\.(?:js|css|woff2?|png|jpe?g|webp|svg|ico)$/
 
 self.addEventListener('install', () => { self.skipWaiting() })
