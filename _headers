@@ -1,0 +1,19 @@
+# Заголовки кэша для Netlify (работает и при Drag&Drop, где netlify.toml не читается).
+#
+# Правило простое:
+#   • у файлов сборки в имени есть хэш содержимого → они меняются вместе с кодом,
+#     поэтому их можно кэшировать на год (immutable);
+#   • index.html, sw.js и manifest должны проверяться при каждом открытии,
+#     иначе человек видит прошлую версию сайта (это и был баг GitHub Pages).
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=0, must-revalidate
